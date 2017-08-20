@@ -1,5 +1,6 @@
 package com.theendcomplete.quotes
 
+import org.grails.web.json.JSONObject
 import org.springframework.security.access.annotation.Secured
 
 class QuotesController {
@@ -34,13 +35,22 @@ class QuotesController {
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def like() {
-
+        System.out.println("liked" + params.id)
+        Long newRating = quoteService.changeRating(params.id as Long, 1l)
+        JSONObject jsonObject = new JSONObject()
+        jsonObject.put("newRating", newRating)
+        render(jsonObject)
+//        render newRating as JSON
 
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def dislike() {
-
+        System.out.println("disliked" + params.id)
+        Long newRating = quoteService.changeRating(params.id as Long, -1l)
+        JSONObject jsonObject = new JSONObject()
+        jsonObject.put("newRating", newRating)
+        render(jsonObject)
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])

@@ -40,29 +40,36 @@ class QuoteService {
     }
 
 
-    void countRating(Long id) {
+    Long countRating(Long id) {
         Quote quote = Quote.get(id)
         if (quote) {
             quote.rating = quote.likes.sum({ it.value })
             quote.save()
+            return quote.rating
         } else {
             throw new QuoteException(message: "quote id is empty or not found: " + id)
         }
 
     }
 
-    void like(Long id, Long value) {
+    Long changeRating(Long id, Long value) {
         Quote quote = Quote.get(id)
-//        value = 1
+
+        if (!value) {
+            value = 0
+        }
         if (quote) {
             Attitude attitude = new Attitude(value: value)
-            quote.addToLikes(Attitude)
+            quote.addToLikes(attitude)
             quote.save()
+            def newRating = countRating(id)
+            return newRating
         } else {
             throw new QuoteException(message: "quote id is empty or not found: " + id)
         }
 
     }
+
 
     Quote getRandomQuote() {
         def list = Quote.list()
