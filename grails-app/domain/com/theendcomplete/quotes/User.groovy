@@ -16,12 +16,14 @@ class User implements Serializable {
 
     String username
     String password
+    String name
     boolean enabled = true
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
 
-    static hasMany = [quotes: Quote, likes: Attitude, dislikes: Dislike]
+//    static hasMany = [quotes: Quote, likes: Attitude, dislikes: Dislike]
+    static hasMany = [quotes: Quote, likes: Attitude]
 
 
     Set<Role> getAuthorities() {

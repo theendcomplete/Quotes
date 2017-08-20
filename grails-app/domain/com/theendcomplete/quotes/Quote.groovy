@@ -1,11 +1,11 @@
 package com.theendcomplete.quotes
 
 class Quote {
-    private String text
-    private long rating
-    private Date dateCreated
-    private Date lastUpdated
-    private String author
+    String text
+    long rating
+    Date dateCreated
+    Date lastUpdated
+    String author
     static constraints = {
         text(nullable: false)
         author(nullable: false)
@@ -13,11 +13,13 @@ class Quote {
         user(nullable: false)
     }
     static belongsTo = [user: User]
-    static hasMany = [likes: Attitude, dislikes: Dislike]
+    static hasMany = [likes: Attitude]
 
-
-     long getRating() {
-            return this.rating
-    }
-
+//    long getRating() {
+//        return this.rating
+//    }
+//
+//    void setRating(long rating) {
+//        this.rating = rating
+//    }
 }

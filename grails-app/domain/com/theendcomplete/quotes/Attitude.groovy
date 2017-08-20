@@ -1,7 +1,9 @@
 package com.theendcomplete.quotes
 
 class Attitude {
-    double value
+    Long value
+    Date dateCreated
+    Date lastUpdated
     static constraints = {
         value(nullable: true)
     }

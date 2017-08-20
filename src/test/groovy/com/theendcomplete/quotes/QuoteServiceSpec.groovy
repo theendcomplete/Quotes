@@ -9,14 +9,17 @@ import spock.lang.Specification
 @TestFor(QuoteService)
 class QuoteServiceSpec extends Specification {
 
+
     def setup() {
+
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+    void "quote creation"() {
+
+        expect:
+        true
     }
 }

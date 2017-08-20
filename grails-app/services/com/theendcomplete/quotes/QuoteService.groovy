@@ -14,6 +14,7 @@ class QuoteService {
 
     Quote createQuote(String text, String author) {
         User createdUser = springSecurityService.currentUser
+//        User createdUser = new User(username: 'john', password: 'secret', name: "Джон", enabled: true).save(flus: true)
         if (createdUser) {
             Quote newQuote = new Quote(text: text, author: author, rating: 0)
             createdUser.addToQuotes(newQuote)
@@ -36,10 +37,13 @@ class QuoteService {
 
     }
 
-    void countRating(String id) {
+    void countRating(Long id) {
         Quote quote = Quote.get(id)
         if (quote) {
-            quote.setRating((long) quote.likes.sum())
+            quote.rating = (Long) quote.likes.sum()
+            quote.save()
+        } else {
+            throw new QuoteException(message: "quote id is empty or not found: " + id)
         }
 
     }
