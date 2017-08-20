@@ -23,6 +23,9 @@ class User implements Serializable {
 
     static hasMany = [quotes: Quote, likes: Attitude]
 
+    String toString() {
+        return username
+    }
 
     Set<Role> getAuthorities() {
         (UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>

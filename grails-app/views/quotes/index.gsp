@@ -1,6 +1,6 @@
 <!doctype html>
-
 <html>
+
 <head>
     <meta name="layout" content="main"/>
     <title>Welcome to Quoter</title>
@@ -9,10 +9,23 @@
 </head>
 
 <body>
-<div id="quotelist" class="col-md-5">
-    <g:render template="quoteEntries" collection="${quoteList}"/>
+<div class="row">
+    <div id="randomQuote" class="col-md-5 centered">
+        <g:render template="randomQuote" collection="${randomQuote}"/>
+    </div>
+
+    <div id="login" class="col-md-4 right">
+        here will be login
+    </div>
 </div>
 
-<div id="login"></div>
+<div class="row">
+
+    <div id="quotelist" class="col-md-5">
+        <g:render template="quoteEntries" collection="${quoteList}"/>
+    </div>
+
+</div>
+
 </body>
 </html>

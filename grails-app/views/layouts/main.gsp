@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" class="no-js">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -17,32 +18,15 @@
 
 <div class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
-        %{--<div class="navbar-header">--}%
-        %{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">--}%
-        %{--<span class="sr-only">Toggle navigation</span>--}%
-        %{--<span class="icon-bar"></span>--}%
-        %{--<span class="icon-bar"></span>--}%
-        %{--<span class="icon-bar"></span>--}%
-        %{--</button>--}%
-        %{--<a class="navbar-brand" href="/#">--}%
-        %{--<i class="fa grails-icon">--}%
-        %{--<asset:image src="quote-icon.png"/>--}%
-        %{--</i> Quoter--}%
-        %{--</a>--}%
-        %{--<div class="nav-tabs-justified" id="navigationLinks">--}%
-        %{--<a href="/#">--}%
-        %{--<i class="fa grails-icon">--}%
-        %{--<asset:image src="quote-icon.png"/>--}%
-        %{--</i> Quoter--}%
-        %{--</a>--}%
-
-        %{--<div class="nav-divider"></div>--}%
         <div class="button-bar" id="navigationBar">
-            %{--<button id="profile" class="btn" --}%
-            <a href="${createLink(controller: 'profile', action: 'index')}">Profile</a></h2>
-            <a href="${createLink(controller: 'quotes', action: 'showTop')}">Top 10</a></h2>
-            <a href="${createLink(controller: 'quotes', action: 'flop')}">Flop 10</a></h2>
-            <a href="${createLink(controller: 'quotes', action: 'last')}">Last</a></h2>
+            <a href="${createLink(controller: 'profile', action: 'index')}" class="btn btnNavi"
+               role="button">Profile</a></h2>
+            <a href="${createLink(controller: 'quotes', action: 'showTop')}" class="btn btnNavi"
+               role="button">Top 10</a></h2>
+            <a href="${createLink(controller: 'quotes', action: 'flop')}" class="btn btnNavi"
+               role="button">Flop 10</a></h2>
+            <a href="${createLink(controller: 'quotes', action: 'last')}" class="btn btnNavi"
+               role="button">Last</a></h2>
         </div>
     </div>
 </div>
@@ -67,6 +51,11 @@
 </div>
 
 <asset:javascript src="application.js"/>
+<style>
+.btnNavi:hover {
+    background-color: #55515c;
+}
 
+</style>
 </body>
 </html>

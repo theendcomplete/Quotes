@@ -6,11 +6,13 @@ import grails.transaction.Transactional
 class QuoteException extends RuntimeException {
     String message
     Quote quote
+
 }
 
 @Transactional
 class QuoteService {
     SpringSecurityService springSecurityService
+    Random random = new Random()
 
     Quote createQuote(String text, String author) {
         User createdUser = springSecurityService.currentUser
@@ -63,6 +65,15 @@ class QuoteService {
     }
 
     Quote getRandomQuote() {
+        def list = Quote.list()
+        int index = random.nextInt(list.size())
+        Quote randomQuote = list.get(index)
+
+        if (randomQuote) {
+            return randomQuote
+        } else {
+            return Quote.get(0)
+        }
 
     }
 

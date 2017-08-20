@@ -6,6 +6,7 @@ import grails.util.Environment
 class BootStrap {
     def quoteService
 
+
     def init = { servletContext ->
         if (Environment.current == Environment.DEVELOPMENT) {
             if ((!User.findByUsername("admin"))) {
@@ -41,7 +42,7 @@ class BootStrap {
                 quote1.addToLikes(dislike1)
                 quote1.save(flush: true)
                 quoteService.countRating(quote1.getId())
-                System.out.println(quote1.getRating())
+//                System.out.println(quote1.getRating())
                 //Создаем тестовый список
 
 
