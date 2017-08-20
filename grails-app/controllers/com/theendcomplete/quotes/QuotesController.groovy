@@ -5,6 +5,7 @@ import org.springframework.security.access.annotation.Secured
 
 class QuotesController {
     QuoteService quoteService
+    def springSecurityService
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def index() {
@@ -15,8 +16,13 @@ class QuotesController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def showTop() {
         def quoteList = Quote.listOrderByRating([max: 10, order: "desc"])
+        def votes
 //        Quote randomQuote = quoteService.getRandomQuote()
-        render(view: 'index', model: [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()])
+        if (springSecurityService.currentUser) {
+            User user = springSecurityService.currentUser
+            votes = user.likes.asList()
+        }
+        render(view: 'index', model: [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(), user: springSecurityService.currentUser, votes: votes])
 
     }
 
@@ -55,7 +61,12 @@ class QuotesController {
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def show() {
-        System.out.println(params)
+        Quote quote = Quote.get(params.id as Long)
+        render(template: "quoteDet", model: [quote: quote], var: 'showQuote')
+//        System.out.println("show action"+params)
+//        render {
+//            div(id: "show" + "${quote.getId()}", "some text inside the div")
+//        }
 
     }
 

@@ -1,6 +1,5 @@
 package com.theendcomplete.quotes
 
-import grails.plugin.springsecurity.SpringSecurityService
 import grails.transaction.Transactional
 
 class QuoteException extends RuntimeException {
@@ -11,7 +10,7 @@ class QuoteException extends RuntimeException {
 
 @Transactional
 class QuoteService {
-    SpringSecurityService springSecurityService
+    def springSecurityService
     Random random = new Random()
 
     Quote createQuote(String text, String author) {
@@ -61,6 +60,11 @@ class QuoteService {
         if (quote) {
             Attitude attitude = new Attitude(value: value)
             quote.addToLikes(attitude)
+            if (springSecurityService.currentUser) {
+                User user = springSecurityService.currentUser
+                user.addToLikes(attitude)
+                user.save()
+            }
             quote.save()
             def newRating = countRating(id)
             return newRating

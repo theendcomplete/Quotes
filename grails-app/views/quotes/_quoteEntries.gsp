@@ -1,29 +1,49 @@
 <asset:javascript src="jquery.js"/>
 
-<div class="well">
-    <div id="quote${it.getId()}" class="well-sm">
+%{--<div class="well">--}%
+<div id="quote${it.getId()}" class="well">
 
-        <h2>${it.author}</h2>
+    <h2>${it.author}</h2>
 
-        <div id="quote${it.getId()}text">
-            ${it.text}  <br>
-        </div>
+    <div id="quote${it.getId()}text">
+        ${it.text}  <br>
+    </div>
 
 
-        <div id="createdBy" class="text-right">
-            created by ${it.user} at <g:formatDate format="dd-MM-yyyy HH:mm" date="${it.dateCreated}"/>
-        </div>
+    <div id="createdBy" class="text-right">
+        created by ${it.user} at <g:formatDate format="dd-MM-yyyy HH:mm" date="${it.dateCreated}"/>
+    </div>
 
-        <div id="rating${it.getId()}">
-            rating: ${it.rating}<br>
-        </div>
+    <div id="rating${it.getId()}">
+        rating: ${it.rating}<br>
+    </div>
 
-        <div class="btn-group-sm">
-            <button type="submit" class="btn btn-success" id="like" onclick="like(${it.getId()});">+</button>
-            <button type="submit" class="btn btn-danger" id="dislike" onclick="dislike(${it.getId()});">-</button>
-        </div>
+    <div class="btn-group-sm">
+        <button type="submit" class="btn btn-success" id="like" onclick="like(${it.getId()});">+</button>
+        <button type="submit" class="btn btn-danger" id="dislike" onclick="dislike(${it.getId()});">-</button>
     </div>
 </div>
+<script>
+    var quoteText = document.getElementById("quote${it.getId()}text");
+
+    quoteText.style.cursor = 'pointer';
+    quoteText.onclick = function () {
+
+        /* Convenience for forms or links that return HTML from a remote ajax call.
+        The returned markup will be inserted into the element id specified.
+         */
+        $('form[data-update-target]').live('ajax:success', function (evt, data) {
+            var target = $(this).data('quote${it.getId()}"');
+            $('#' + target).html(data);
+        });
+    }
+    )
+    ;
+</script>
+
+
+%{--</div>--}%
+%{--//textLink--}%
 <script>
     var quoteText = document.getElementById("quote${it.getId()}text");
 

@@ -74,7 +74,7 @@
     </div>
 
     <div id="login" class="col-md-4 right">
-        here will be login
+        <g:render template="login" collection="${votes}"/>
     </div>
 </div>
 
