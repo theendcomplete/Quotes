@@ -22,7 +22,6 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
 
-//    static hasMany = [quotes: Quote, likes: Attitude, dislikes: Dislike]
     static hasMany = [quotes: Quote, likes: Attitude]
 
 

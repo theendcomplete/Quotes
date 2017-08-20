@@ -39,7 +39,7 @@
         %{--<div class="nav-divider"></div>--}%
         <div class="button-bar" id="navigationBar">
             %{--<button id="profile" class="btn" --}%
-            <a href="${createLink(controllesr: 'profile', action: 'index')}">Profile</a></h2>
+            <a href="${createLink(controller: 'profile', action: 'index')}">Profile</a></h2>
             <a href="${createLink(controller: 'quotes', action: 'showTop')}">Top 10</a></h2>
             <a href="${createLink(controller: 'quotes', action: 'flop')}">Flop 10</a></h2>
             <a href="${createLink(controller: 'quotes', action: 'last')}">Last</a></h2>

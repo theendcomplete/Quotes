@@ -99,11 +99,11 @@ environments:
     development:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:file:D:\dev\databases\quotes;MVCC=TRUE;LOCK_TIMEOUT=1000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:h2:file:D:\dev\databases\quotes\quoteDB;MVCC=TRUE;LOCK_TIMEOUT=1000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:file:D:\dev\databases\quotes;MVCC=TRUE;LOCK_TIMEOUT=1000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:h2:file:D:\dev\databases\quotes\quoteDB;MVCC=TRUE;LOCK_TIMEOUT=1000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
             dbCreate: create-drop
