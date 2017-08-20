@@ -41,7 +41,7 @@ class QuoteService {
     void countRating(Long id) {
         Quote quote = Quote.get(id)
         if (quote) {
-            quote.rating = (Long) quote.likes.value.sum()
+            quote.rating = quote.likes.sum({ it.value })
             quote.save()
         } else {
             throw new QuoteException(message: "quote id is empty or not found: " + id)
@@ -59,6 +59,10 @@ class QuoteService {
         } else {
             throw new QuoteException(message: "quote id is empty or not found: " + id)
         }
+
+    }
+
+    Quote getRandomQuote() {
 
     }
 

@@ -3,11 +3,10 @@ package com.theendcomplete.quotes
 import grails.compiler.GrailsCompileStatic
 import grails.plugin.springsecurity.SpringSecurityService
 import groovy.transform.EqualsAndHashCode
-import groovy.transform.ToString
 
 @GrailsCompileStatic
 @EqualsAndHashCode(includes = 'username')
-@ToString(includes = 'username', includeNames = true, includePackage = false)
+//@ToString(includes = 'username', includeNames = true, includePackage = false)
 class User implements Serializable {
 
     private static final long serialVersionUID = 1
