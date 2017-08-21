@@ -22,7 +22,6 @@
                 console.log(resp);
                 console.log("#rating" + ElementId);
                 var updateDivId = "#rating" + ElementId
-
                 $(updateDivId).text("rating: " + resp.newRating);
                 $("#lastVotesSize").text("Last 5 votes of " + resp.votesTotal);
             }
@@ -42,7 +41,7 @@
                 console.log("#rating" + ElementId);
                 var updateDivId = "#rating" + ElementId
                 $(updateDivId).text("rating: " + resp.newRating);
-
+                $("#lastVotesSize").text("Last 5 votes of " + resp.votesTotal);
             }
         });
     }

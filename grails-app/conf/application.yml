@@ -106,7 +106,7 @@ environments:
             url: jdbc:h2:file:D:\dev\databases\quotes\quoteDB;MVCC=TRUE;LOCK_TIMEOUT=1000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             driverClassName: com.mysql.jdbc.Driver
             username: root
             password: Slayer123
@@ -119,7 +119,7 @@ environments:
                   maxIdle: 25
                   maxWait: 10000
                   maxAge: 600000
-                  characterEncoding: utf-8
+#                  characterEncoding: utf-8
                   timeBetweenEvictionRunsMillis: 5000
                   minEvictableIdleTimeMillis: 60000
                   validationQuery: SELECT 1

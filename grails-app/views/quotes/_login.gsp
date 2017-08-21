@@ -9,13 +9,13 @@
             <div class="row">
                 <div id="avatar" class="col-md-12" align="right">
                     <img src="${resource(dir: 'images', file: 'quote-icon.png')}" class="img-thumbnail">
-                    <a href="${createLink(controller: 'profile', action: 'index')}">Edit</a>
+                    <a href="${createLink(controller: 'profile', action: 'show')}">Edit</a>
                 </div>
             </div>
 
             <div class="row">
                 <div class="well col-md-12" id="userVotes">
-                    <div class="h4" id="lastVotesSize">Last 5 votes: of ${votes[0].user.likes.size()}</div>
+                    <div class="h4" id="lastVotesSize">Last 5 votes of ${votesTotal}</div>
                     <g:each var="vote" in="${votes}">
                         <g:if test="${vote.value > 0}">
                             <p class="h4">You liked:</p>

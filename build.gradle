@@ -6,19 +6,19 @@ buildscript {
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.11.6"
-        classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
+        classpath "org.grails.plugins:hibernate5:${gormVersion - ".RELEASE"}"
     }
 }
 
 version "0.1"
 group "quotes"
 
-apply plugin:"eclipse"
-apply plugin:"idea"
-apply plugin:"war"
-apply plugin:"org.grails.grails-web"
-apply plugin:"org.grails.grails-gsp"
-apply plugin:"asset-pipeline"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "war"
+apply plugin: "org.grails.grails-web"
+apply plugin: "org.grails.grails-gsp"
+apply plugin: "asset-pipeline"
 
 repositories {
     mavenLocal()
@@ -42,9 +42,12 @@ dependencies {
     profile "org.grails.profiles:web"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.11.6"
     runtime "com.h2database:h2"
+    //mysql
+    runtime 'mysql:mysql-connector-java:5.1.29'
+    runtime "org.apache.tomcat:tomcat-jdbc"
     //Spring security
     compile 'org.grails.plugins:spring-security-core:3.1.2'
-
+    provided "org.springframework.boot:spring-boot-starter-tomcat"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
 //    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"

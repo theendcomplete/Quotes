@@ -20,7 +20,8 @@ class QuotesController {
         if (springSecurityService.currentUser) {
             User user = springSecurityService.currentUser
             votes = Attitude.findAllByUser(user, [max: 5, order: "desc", sort: "dateCreated"])
-            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(), user: springSecurityService.currentUser, votes: votes]
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(),
+                     user     : springSecurityService.currentUser, votes: votes, votesTotal: user.likes.size()]
         } else {
             model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
         }
@@ -33,13 +34,35 @@ class QuotesController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def Flop() {
         def quoteList = Quote.listOrderByRating([max: 10, order: "asc"])
-        render(view: 'index', model: [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()])
+        def votes
+        def model
+        if (springSecurityService.currentUser) {
+            User user = springSecurityService.currentUser
+            votes = Attitude.findAllByUser(user, [max: 5, order: "desc", sort: "dateCreated"])
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(),
+                     user     : springSecurityService.currentUser, votes: votes, votesTotal: user.likes.size()]
+        } else {
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
+        }
+
+        render(view: 'index', model: model)
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def last() {
         def quoteList = Quote.listOrderByDateCreated([max: 10, order: "asc"])
-        render(view: 'index', model: [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()])
+        def votes
+        def model
+        if (springSecurityService.currentUser) {
+            User user = springSecurityService.currentUser
+            votes = Attitude.findAllByUser(user, [max: 5, order: "desc", sort: "dateCreated"])
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(),
+                     user     : springSecurityService.currentUser, votes: votes, votesTotal: user.likes.size()]
+        } else {
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
+        }
+
+        render(view: 'index', model: model)
     }
 
 

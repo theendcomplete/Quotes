@@ -19,7 +19,7 @@
 <div class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
         <div class="button-bar" id="navigationBar">
-            <a href="${createLink(controller: 'profile', action: 'index')}" class="btn btnNavi"
+            <a href="${createLink(controller: 'profile', action: 'show')}" class="btn btnNavi"
                role="button">Profile</a>
             <a href="${createLink(controller: 'quotes', action: 'showTop')}" class="btn btnNavi"
                role="button">Top 10</a>
