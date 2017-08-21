@@ -48,8 +48,6 @@
             </div>
         </div>
 
-        %{--//confirm button--}%
-
     </fieldset>
 
 </form>

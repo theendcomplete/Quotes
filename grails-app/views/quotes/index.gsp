@@ -12,8 +12,6 @@
 
 <script>
     function like(ElementId) {
-//        $(document).ready(function () {
-//            $('button').click(function () {
         var URL = "${createLink(controller: 'quotes', action: 'like')}" + "/" + ElementId;
         console.log(ElementId);
         $.ajax({
@@ -24,11 +22,11 @@
                 console.log(resp);
                 console.log("#rating" + ElementId);
                 var updateDivId = "#rating" + ElementId
+
                 $(updateDivId).text("rating: " + resp.newRating);
+                $("#lastVotesSize").text("Last 5 votes of " + resp.votesTotal);
             }
         });
-//            });
-//        });
     }
 </script>
 <script>
@@ -36,7 +34,6 @@
         var URL = "${createLink(controller: 'quotes', action: 'dislike')}" + "/" + ElementId;
         console.log(ElementId);
         $.ajax({
-
             url: URL,
             dataType: "json",
             asnyc: false,
@@ -45,38 +42,29 @@
                 console.log("#rating" + ElementId);
                 var updateDivId = "#rating" + ElementId
                 $(updateDivId).text("rating: " + resp.newRating);
-                event.cancelBubble
+
             }
         });
     }
 </script>
 
+<div class="col-md-12">
+    <div class="row">
+        <div id="randomQuote" class="col-md-6">
+            <div class="row centered">
+                <g:render template="randomQuote" collection="${randomQuote}"/></div>
 
-<div class="row">
-    <div id="randomQuote" class="col-md-5 centered">
-        <g:render template="randomQuote" collection="${randomQuote}"/>
-    </div>
-    <sec:ifLoggedIn>
-        <div id="login" class="col-md-5 right">
-            <g:render template="login" collection="${votes}"/>
+            <div class="row">
+                <div id="quotelist" class="col-md-12">
+                    <g:render template="quoteEntries" collection="${quoteList}"/>
+                </div>
+            </div>
         </div>
-    </sec:ifLoggedIn>
 
-
-
-    <sec:ifNotLoggedIn>
-        <div id="login" class="col-md-5 right">
-            <g:render template="login"/>
+        <div id="login" class="col-md-6 right">
+            <g:render var="${votes}" template="login"/>
         </div>
-    </sec:ifNotLoggedIn>
-</div>
-
-<div class="row">
-
-    <div id="quotelist" class="col-md-5">
-        <g:render template="quoteEntries" collection="${quoteList}"/>
     </div>
-
 </div>
 
 </body>

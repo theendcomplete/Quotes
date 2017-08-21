@@ -19,12 +19,14 @@ class QuotesController {
         def model
         if (springSecurityService.currentUser) {
             User user = springSecurityService.currentUser
-            votes = user.likes.asList()
+            votes = Attitude.findAllByUser(user, [max: 5, order: "desc", sort: "dateCreated"])
             model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(), user: springSecurityService.currentUser, votes: votes]
         } else {
             model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
-            render(view: 'index', model: model)
         }
+
+        render(view: 'index', model: model)
+
 
     }
 
@@ -43,20 +45,30 @@ class QuotesController {
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def like() {
-        System.out.println("liked" + params.id)
         Long newRating = quoteService.changeRating(params.id as Long, 1l)
         JSONObject jsonObject = new JSONObject()
         jsonObject.put("newRating", newRating)
+        if (springSecurityService.currentUser) {
+            User user = springSecurityService.currentUser
+            def votes = Attitude.findAllByUser(user, [max: 5, order: "desc", sort: "dateCreated"])
+            jsonObject.put("votes", votes)
+            jsonObject.put("votesTotal", user.likes.size())
+        }
         render(jsonObject)
 
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def dislike() {
-        System.out.println("disliked" + params.id)
         Long newRating = quoteService.changeRating(params.id as Long, -1l)
         JSONObject jsonObject = new JSONObject()
         jsonObject.put("newRating", newRating)
+        if (springSecurityService.currentUser) {
+            User user = springSecurityService.currentUser
+            def votes = Attitude.findAllByUser(user, [max: 5, order: "desc", sort: "dateCreated"])
+            jsonObject.put("votes", votes)
+            jsonObject.put("votesTotal", user.likes.size())
+        }
         render(jsonObject)
     }
 
