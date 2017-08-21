@@ -1,16 +1,31 @@
 <%@ page import="grails.plugin.springsecurity.SpringSecurityService" %>
 
-<div class="login col-md-12">
+<div class="login col-md-8">
 
 <sec:ifLoggedIn>
-    <div class="col-md-6">
-        <div class="row">Hello, <sec:username/>!</div>
-
+    <div class="col-md-12">
         <div class="row">
-            <div id="avatar" class="col-md-12" align="right">
+            <div class="col-md-8">
+                <div class="h3">Hello, <sec:username/>!</div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="h4">
+                    <g:form controller="logout">
+                        <g:submitButton class="btn btn-danger" name="logout" value="Logout"/>
+                    </g:form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-right">
+            <div class="col-md-6"></div>
+
+            <div id="avatar" class="col-md-6" align="right">
                 <img src="${resource(dir: 'images', file: 'quote-icon.png')}" class="img-thumbnail">
                 <a href="${createLink(controller: 'profile', action: 'show')}">Edit</a>
             </div>
+
         </div>
 
         <div class="row">
@@ -40,8 +55,8 @@
     <div class="col-md-6">
     <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
     <p>
-        <label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-        <input type="text" class="text_" name="username" id="username"/>
+        <label for="username" class="h3"><g:message code='springSecurity.login.username.label'/>:</label>
+        <input type="text" class="" name="username" id="username"/>
     </p>
 
     <p>
