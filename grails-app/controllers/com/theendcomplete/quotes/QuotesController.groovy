@@ -50,7 +50,7 @@ class QuotesController {
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def last() {
-        def quoteList = Quote.listOrderByDateCreated([max: 10, order: "asc"])
+        def quoteList = Quote.listOrderByDateCreated([max: 10, order: "desc"])
         def votes
         def model
         if (springSecurityService.currentUser) {
@@ -114,10 +114,12 @@ class QuotesController {
     def createQuote() {
         if (params.quoteText && params.quoteAuthor) {
             quoteService.createQuote(params.quoteAuthor, params.quoteText)
-            redirect(action: "showTop")
+//            redirect(action: "showTop")
+            redirect(uri: request.getHeader('referer'))
 
         } else {
-            redirect(action: "showTop")
+//            redirect(action: "showTop")
+            redirect(uri: request.getHeader('referer'))
         }
     }
 
