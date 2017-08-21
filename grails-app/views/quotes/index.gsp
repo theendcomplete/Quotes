@@ -51,8 +51,13 @@
     <div class="row">
         <div id="randomQuote" class="col-md-6">
             <div class="row centered">
-                <g:render template="randomQuote" collection="${randomQuote}"/></div>
-
+                <g:render template="randomQuote" collection="${randomQuote}"/>
+            </div>
+            <sec:ifLoggedIn>
+                <div class="row centered">
+                    <g:render template="newQuote"/>
+                </div>
+            </sec:ifLoggedIn>
             <div class="row">
                 <div id="quotelist" class="col-md-12">
                     <g:render template="quoteEntries" collection="${quoteList}"/>

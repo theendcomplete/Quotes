@@ -111,4 +111,14 @@ class QuotesController {
 
     }
 
+    def createQuote() {
+        if (params.quoteText && params.quoteAuthor) {
+            quoteService.createQuote(params.quoteAuthor, params.quoteText)
+            redirect(action: "showTop")
+
+        } else {
+            redirect(action: "showTop")
+        }
+    }
+
 }

@@ -11,11 +11,15 @@ class ProfileController {
     def register() {}
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
-    def createUser() {}
+    def createUser() {
+        Role registered = new Role(authority: 'ROLE_REGISTERED').save(flush: true)
+        User newUser = new User([username: params.username, password: params.password]).save(flush: true)
+        UserRole.create(newUser, registered)
+        redirect(actionName: 'show')
+    }
 
     def show() {
         User user = springSecurityService.currentUser
-//        render(view: 'show', model: [user: user])
         [profile: user]
 
 
