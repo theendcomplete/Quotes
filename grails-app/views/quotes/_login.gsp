@@ -53,20 +53,22 @@
 
 <sec:ifNotLoggedIn>
     <div class="col-md-6">
-    <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
+%{--<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">--}%
+    <form action="${createLink(controller: 'login', action: 'authenticate')}" method="POST" id="loginForm"
+          class="cssform" autocomplete="off">
     <p>
-        <label for="username" class="h3"><g:message code='springSecurity.login.username.label'/>:</label>
+        <label for="username" class="h4"><g:message code='springSecurity.login.username.label'/>:</label>
         <input type="text" class="" name="username" id="username"/>
     </p>
 
     <p>
-        <label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
-        <input type="password" class="text_" name="password" id="password"/>
+        <label for="password" class="h4"><g:message code='springSecurity.login.password.label'/>:</label>
+        <input type="password" class="text_ password-field" name="password" id="password"/>
     </p>
 
     <p id="remember_me_holder">
-        <input type="checkbox" class="chk" name="remember-me" id="remember_me"/>
-        <label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
+        <input type="checkbox" class="check" name="remember-me" id="remember_me"/>
+        <label for="remember_me" class="h4"><g:message code='springSecurity.login.remember.me.label'/></label>
     </p>
 
     <p>
