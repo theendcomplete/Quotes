@@ -20,13 +20,13 @@
     <div class="container">
         <div class="button-bar" id="navigationBar">
             <a href="${createLink(controller: 'profile', action: 'index')}" class="btn btnNavi"
-               role="button">Profile</a></h2>
+               role="button">Profile</a>
             <a href="${createLink(controller: 'quotes', action: 'showTop')}" class="btn btnNavi"
-               role="button">Top 10</a></h2>
+               role="button">Top 10</a>
             <a href="${createLink(controller: 'quotes', action: 'flop')}" class="btn btnNavi"
-               role="button">Flop 10</a></h2>
+               role="button">Flop 10</a>
             <a href="${createLink(controller: 'quotes', action: 'last')}" class="btn btnNavi"
-               role="button">Last</a></h2>
+               role="button">Last</a>
         </div>
     </div>
 </div>

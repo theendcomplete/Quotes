@@ -14,12 +14,4 @@ class Quote {
     }
     static belongsTo = [user: User]
     static hasMany = [likes: Attitude]
-
-//    long getRating() {
-//        return this.rating
-//    }
-//
-//    void setRating(long rating) {
-//        this.rating = rating
-//    }
 }

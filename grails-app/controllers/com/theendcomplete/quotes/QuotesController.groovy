@@ -9,7 +9,6 @@ class QuotesController {
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def index() {
-//        redirect(action: showTop())
 
     }
 
@@ -17,12 +16,15 @@ class QuotesController {
     def showTop() {
         def quoteList = Quote.listOrderByRating([max: 10, order: "desc"])
         def votes
-//        Quote randomQuote = quoteService.getRandomQuote()
+        def model
         if (springSecurityService.currentUser) {
             User user = springSecurityService.currentUser
             votes = user.likes.asList()
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(), user: springSecurityService.currentUser, votes: votes]
+        } else {
+            model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
+            render(view: 'index', model: model)
         }
-        render(view: 'index', model: [quoteList: quoteList, randomQuote: quoteService.getRandomQuote(), user: springSecurityService.currentUser, votes: votes])
 
     }
 
@@ -46,7 +48,6 @@ class QuotesController {
         JSONObject jsonObject = new JSONObject()
         jsonObject.put("newRating", newRating)
         render(jsonObject)
-//        render newRating as JSON
 
     }
 
@@ -63,10 +64,10 @@ class QuotesController {
     def show() {
         Quote quote = Quote.get(params.id as Long)
         render(template: "quoteDet", model: [quote: quote], var: 'showQuote')
-//        System.out.println("show action"+params)
-//        render {
-//            div(id: "show" + "${quote.getId()}", "some text inside the div")
-//        }
+        System.out.println("show action" + params)
+        render {
+            div(id: "show" + "${quote.getId()}", "some text inside the div")
+        }
 
     }
 

@@ -20,7 +20,7 @@ class BootStrap {
                 UserRole.create(admin, registered)
                 UserRole.create(john, registered)
                 UserRole.create(jane, registered)
-                //заполняем тестовыми данными
+                //заполняем начальными данными
                 Quote quote1 = new Quote(text: "there is no knowledge that is not power", author: "Shao Khan", rating: 0, user: admin).save(flush: true)
                 Quote quote2 = new Quote(text: "A rose by any other name would smell as sweet.", author: "William Shakespeare", rating: 2, user: admin).save(flush: true)
                 Quote quote3 = new Quote(text: "Eighty percent of success is showing up.", author: "Woody Allen", rating: 3, user: admin).save(flush: true)
@@ -38,19 +38,16 @@ class BootStrap {
                 Attitude like2 = new Attitude(value: 1)
                 Attitude dislike1 = new Attitude(value: -1)
                 quote1.addToLikes(like1)
+                admin.addToLikes(like1)
+                admin.addToLikes(like2)
+                admin.addToLikes(dislike1)
                 quote1.addToLikes(like2)
                 quote1.addToLikes(dislike1)
                 quote1.save(flush: true)
                 quoteService.countRating(quote1.getId())
-//                System.out.println(quote1.getRating())
-                //Создаем тестовый список
-
-
             } else {
                 System.out.println("already have admin")
             }
-
-
         }
     }
 

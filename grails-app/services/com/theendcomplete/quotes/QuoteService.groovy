@@ -5,17 +5,14 @@ import grails.transaction.Transactional
 class QuoteException extends RuntimeException {
     String message
     Quote quote
-
 }
 
 @Transactional
 class QuoteService {
     def springSecurityService
     Random random = new Random()
-
     Quote createQuote(String text, String author) {
         User createdUser = springSecurityService.currentUser
-//        User createdUser = new User(username: 'john', password: 'secret', name: "Джон", enabled: true).save(flus: true)
         if (createdUser) {
             Quote newQuote = new Quote(text: text, author: author, rating: 0)
             createdUser.addToQuotes(newQuote)
@@ -38,7 +35,6 @@ class QuoteService {
 
     }
 
-
     Long countRating(Long id) {
         Quote quote = Quote.get(id)
         if (quote) {
@@ -48,7 +44,6 @@ class QuoteService {
         } else {
             throw new QuoteException(message: "quote id is empty or not found: " + id)
         }
-
     }
 
     Long changeRating(Long id, Long value) {

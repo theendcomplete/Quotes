@@ -19,35 +19,36 @@
                     <div class="h5">Last votes: ${votes.size()}</div>
                     <g:each in="${votes}">
                         <p>${it.value as java.lang.String}</p>
-                    %{--<p>${it.Quote.text}</p>--}%
+
+                        <p>${it.quote.text}</p>
                     </g:each>
-
                 </div>
-
             </div>
-
         </div>
     </sec:ifLoggedIn>
 
     <sec:ifNotLoggedIn>
-        <form name="banner-login" method="POST" action="${resource('file': 'j_spring_security_check')}">
-            <ul>
-                <li>
-                    <label for="j_username">Username:</label>
-                    <g:textField name="j_username"/>
-                </li>
-                <li>
-                    <label for="j_password">Password:</label>
-                    <g:passwordField name="j_password"/>
-                </li>
-            </ul>
+        <div class="col-md-6">
+            <form name="banner-login" method="POST" action="${resource('file': 'j_spring_security_check')}">
+                <ul>
+                    <li>
+                        <label for="j_username">Username:</label>
+                        <g:textField name="j_username"/>
+                    </li>
+                    <li>
+                        <label for="j_password">Password:</label>
+                        <g:passwordField name="j_password"/>
+                    </li>
+                </ul>
 
-            <div class="button-panel">
-                <g:submitButton name="banner-login-button" value="Log in"/>
+                <div class="button-panel">
+                    <g:submitButton name="banner-login-button" value="Log in"/>
+                </div>
+            </form>
+
+            <div class="row">
+                <a href="${createLink(controller: 'profile', action: 'register')}">Create account</a>
             </div>
-        </form>
+        </div>
     </sec:ifNotLoggedIn>
-
 </div>
-
-%{--</div>--}%
