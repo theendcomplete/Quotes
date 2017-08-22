@@ -57,9 +57,9 @@
                     </div>
                     <hr>
                 </g:each>
-                <div class="pagination">
-                    <g:paginate controller="profile" action="show" total="${profile.quotes.size()}" max="8"/>
-                </div>
+            %{--<div class="pagination">--}%
+            %{--<g:paginate controller="profile" action="show" total="${profile.quotes.size()}" max="8"/>--}%
+            %{--</div>--}%
             </div>
 
             <div class="col-md-4" id="userVotes">
@@ -80,9 +80,9 @@
                         <hr>
                     </g:if>
                 </g:each>
-                <div class="pagination">
-                    <g:paginate controller="profile" action="show" total="${profile.likes.size()}" max="8"/>
-                </div>
+            %{--<div class="pagination">--}%
+            %{--<g:paginate controller="profile" action="show" total="${profile.likes.size()}" max="8"/>--}%
+            %{--</div>--}%
             </div>
         </div>
     </div>
