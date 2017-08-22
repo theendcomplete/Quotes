@@ -12,7 +12,10 @@
 
 <body>
 <div class="col-md-8">
-    <div class="row">Hello, ${profile.toString()}!</div>
+
+    <div class="row">
+        <div class="col-md-12 h2">This is your profile, ${profile.toString()}!</div>
+    </div>
 
     <div class="row">
         <div id="avatar" class="col-md-2" align="right">

@@ -19,6 +19,16 @@
     <div class="btn-group-sm">
         <button type="submit" class="btn btn-success" id="like" onclick="like('${it.getId()}');">+</button>
         <button type="submit" class="btn btn-danger" id="dislike" onclick="dislike('${it.getId()}');">-</button>
+        <sec:ifAllGranted roles="ROLE_ADMIN">
+            <a href="${createLink(controller: 'quotes', action: 'removeQuote', id: it.getId())}"
+               class="btn"
+               role="button">Delete</a>
+
+            <a href="${createLink(controller: 'quotes', action: 'removeQuote', id: it.getId())}"
+               class="btn"
+               role="button">Edit</a>
+        </sec:ifAllGranted>
+
     </div>
 </div>
 %{--<script>--}%
