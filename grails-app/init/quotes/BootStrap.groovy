@@ -38,9 +38,23 @@ class BootStrap {
             Attitude like2 = new Attitude(value: 1)
             Attitude dislike1 = new Attitude(value: -1)
             quote1.addToLikes(like1)
+
             admin.addToLikes(like1)
             admin.addToLikes(like2)
             admin.addToLikes(dislike1)
+            admin.addToQuotes(quote1)
+            admin.addToQuotes(quote2)
+            admin.addToQuotes(quote3)
+            admin.addToQuotes(quote4)
+            admin.addToQuotes(quote5)
+            admin.addToQuotes(quote6)
+            admin.addToQuotes(quote7)
+            admin.addToQuotes(quote8)
+
+            jane.addToQuotes(quote9)
+            jane.addToQuotes(quote10)
+            jane.addToQuotes(quote11)
+
             quote1.addToLikes(like2)
             quote1.addToLikes(dislike1)
             quote1.save(flush: true)

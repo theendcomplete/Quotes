@@ -23,6 +23,8 @@ class ProfileController {
 
     def show() {
         User user = springSecurityService.currentUser
-        [profile: user]
+        def userQuotes = Attitude.findAllByUser(user, [order: "desc", sort: "dateCreated"])
+        def votes = Attitude.findAllByUser(user, [order: "desc", sort: "dateCreated"])
+        [profile: user, userQuotes: userQuotes, votes: votes]
     }
 }
