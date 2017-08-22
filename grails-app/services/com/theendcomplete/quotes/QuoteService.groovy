@@ -32,8 +32,20 @@ class QuoteService {
 
     }
 
-    Quote removeQuote() {
+    Boolean removeQuote(Long id) {
+        User user = springSecurityService.currentUser
+        Quote removable = Quote.get(id)
+        if (removable) {
+            if (user == removable.user || user.authorities.any { it.authority == "ROLE_ADMIN" }) {
+                removable.delete()
+                return true
 
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
 
     Long countRating(Long id) {

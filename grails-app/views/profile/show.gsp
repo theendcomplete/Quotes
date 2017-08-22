@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-12" id="votesAndLikes">
             <div class="col-md-8" id="userQuotes">
-                <div class="h4">Your quotes:${profile.quotes.size()}</div>
+                <div class="h4">Your quotes:${userQuotes.size()}</div>
                 <g:each var="quote" in="${userQuotes}">
                     <hr>
 
@@ -40,15 +40,18 @@
                     </div>
 
                     <div id="rating${quote.getId()}">
-                        <div class="h3"></div>rating: ${quote.rating}<br>
+                        <div class="h3">rating: ${quote.rating}</div>
                     </div>
 
-                %{--<div class="btn-group-sm">--}%
-                %{--<button type="submit" class="btn btn-success" id="like"--}%
-                %{--onclick="like('${it.getId()}');">+</button>--}%
-                %{--<button type="submit" class="btn btn-danger" id="dislike"--}%
-                %{--onclick="dislike('${it.getId()}');">-</button>--}%
-                %{--</div>--}%
+                    <div class="row">
+                        <a href="${createLink(controller: 'quotes', action: 'removeQuote', id: quote.getId())}"
+                           class="btn"
+                           role="button">Delete</a>
+
+                        <a href="${createLink(controller: 'quotes', action: 'removeQuote', id: quote.getId())}"
+                           class="btn"
+                           role="button">Edit</a>
+                    </div>
                     <hr>
                 </g:each>
                 <div class="pagination">

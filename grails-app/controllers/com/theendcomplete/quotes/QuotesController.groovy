@@ -112,4 +112,20 @@ class QuotesController {
         }
     }
 
+    def removeQuote() {
+        if (params.id) {
+            Boolean result = quoteService.removeQuote(params.id)
+            if (result) {
+                flash.message = ("Succesfully removed quote №" + params.id)
+            } else {
+                flash.message = ("Fail to remove quote № " + params.id)
+            }
+        }
+        redirect(uri: request.getHeader('referer'))
+    }
+
+    def editQuote() {
+
+    }
+
 }
