@@ -10,7 +10,7 @@
 
 <body>
 
-<form class="form-horizontal" action="createUser">
+<form class="form-horizontal" action="createUser" method="POST">
     <fieldset>
 
         <!-- Form Name -->

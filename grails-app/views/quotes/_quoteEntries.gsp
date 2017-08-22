@@ -39,9 +39,13 @@
     var quoteText = document.getElementById("quote${it.getId()}text");
     quoteText.style.cursor = 'pointer';
     quoteText.onclick = function () {
-        window.alert("Here will be redirect to quote detail page")
+        $('#quote${it.getId()}').popover('show')
+//        window.alert("Here will be redirect to quote detail page")
         %{--location.href = "${createLink(controller: 'quotes', action: 'show',id:"${it.getId()}" )}"--}%
     };
+</script>
+<script>
+
 </script>
 
 

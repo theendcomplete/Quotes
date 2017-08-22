@@ -108,8 +108,8 @@ environments:
         dataSource:
             dbCreate: update
             driverClassName: com.mysql.jdbc.Driver
-            username: root
-            password: Slayer123
+            username: quote
+            password: quote
             url: jdbc:mysql://glassfish/quotes?useUnicode=true&characterEncoding=utf-8
             properties:
                   jmxEnabled: true

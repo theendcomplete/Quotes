@@ -9,7 +9,6 @@ class QuotesController {
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def index() {
-
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
@@ -25,10 +24,7 @@ class QuotesController {
         } else {
             model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
         }
-
         render(view: 'index', model: model)
-
-
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
@@ -44,7 +40,6 @@ class QuotesController {
         } else {
             model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
         }
-
         render(view: 'index', model: model)
     }
 
@@ -61,7 +56,6 @@ class QuotesController {
         } else {
             model = [quoteList: quoteList, randomQuote: quoteService.getRandomQuote()]
         }
-
         render(view: 'index', model: model)
     }
 
@@ -103,22 +97,17 @@ class QuotesController {
         render {
             div(id: "show" + "${quote.getId()}", "some text inside the div")
         }
-
     }
 
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def getQuoteRating() {
-
     }
 
     def createQuote() {
         if (params.quoteText && params.quoteAuthor) {
             quoteService.createQuote(params.quoteAuthor, params.quoteText)
-//            redirect(action: "showTop")
             redirect(uri: request.getHeader('referer'))
-
         } else {
-//            redirect(action: "showTop")
             redirect(uri: request.getHeader('referer'))
         }
     }

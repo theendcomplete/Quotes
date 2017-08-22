@@ -49,6 +49,7 @@
 
 <div class="col-md-12">
     <div class="row">
+
         <div id="randomQuote" class="col-md-6">
             <div class="row centered">
                 <g:render template="randomQuote" collection="${randomQuote}"/>
@@ -66,6 +67,7 @@
         </div>
 
         <div id="login" class="col-md-6 right">
+
             <g:render var="${votes}" template="login"/>
         </div>
     </div>
